@@ -1,12 +1,12 @@
 # jiradog
 
-A tool to poll data from JIRA to upload as a metric to DataDog.
+A tool to poll data from JIRA to upload as a metric to Datadog.
 
 ## Prerequisites
 
 Dependencies (outside of python standard library)
 * JIRA
-* DataDog
+* Dataog
 * pprint
 * jinja2
 
@@ -47,7 +47,7 @@ The information you are pulling from JIRA is built around JIRA's own query langu
 
 ```
   {
-    "metric_name": "[name of DataDog metric]",
+    "metric_name": "[name of Datadog metric]",
     "__comment": "[comment]",
     "projects": [
       "KEY1",
@@ -81,7 +81,7 @@ The information you are pulling from JIRA is built around JIRA's own query langu
     }
 ```
 
-Using standard JSON syntax we are defining what information to poll from JIRA, how to process it, and what to name the metric in DataDog.
+Using standard JSON syntax we are defining what information to poll from JIRA, how to process it, and what to name the metric in Datadog.
 
 ### script-based filtering
 We use a jinja2/nunjucks style filtering with if/then statements. JQL currently doesn't support selecting fixVersions with a "~" (contains) or "LIKE" operator. To get around this, take a look at the `filter` key-value pair in this example data provider block:
@@ -96,7 +96,7 @@ The jinja statement must return `true`.
 
 ### More on the metrics.json
 
-The metrics.json file is a JSON list of dictionaries, each one a 'description'/'assertion' of what is needed out of JIRA, how to process, and what to name the metric in DataDog. Because it is json, be wary of JSON's strict syntax, especially with trailing/missing commas.
+The metrics.json file is a JSON list of dictionaries, each one a 'description'/'assertion' of what is needed out of JIRA, how to process, and what to name the metric in Datadog. Because it is json, be wary of JSON's strict syntax, especially with trailing/missing commas.
 
 ### Philosophy
 
@@ -175,9 +175,9 @@ Example comment:
 
 ### Naming Conventions
 
-#### DataDog Metric Name
+#### Datadog Metric Name
 
-This is the jiradog way to name metrics for DataDog, using a similar psuedo-heirarchical dot list that the DataDog agent uses.
+This is the jiradog way to name metrics for Datadog, using a similar psuedo-heirarchical dot list that the Datadog agent uses.
 
 ```
 [source].[Variable][Variable][Group By].[method]
